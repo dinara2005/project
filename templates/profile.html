@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_profile.css') }}">
+    <title>Сайт-Помощник для обучения школьного курса физики и робототехники</title>
+</head>
+
+<body>
+
+	<ul>
+	  <li><a  href="/">Главная</a></li>
+	  <li><a href="/physics">Физика</a></li>
+	  <li><a href="/robotics">Робототехника</a></li>
+	  <li><a href="/info">Пособии</a></li>
+	  <li class = "s_l" ><a  href="/logout">Выйти</a></li>
+	  
+	</ul>
+	
+	<div class="cr_el">
+		<div class="flex"> 
+			 <p>Имя: </p>
+			 <p class = "p1" >{{name}} </p>
+		</div>
+		<div class="flex"> 
+			 
+			 <p>Фамилия: </p>
+			 <p style = "padding-left: 25px">{{surname}}</p>
+		 
+		</div>
+		<div class="flex"> 
+			 
+			 <p>Возраст: </p>
+		
+			 <p style = "padding-left: 35px">{{age}}</p>
+		 
+		</div>
+		<div class="flex"> 
+			 
+			 <p>Должность: </p>
+		
+			 <p style = "padding-left: 12px">{{status}}</p>
+		 
+		</div>
+		<div class="flex"> 
+			 
+			 <p>Учреждение: </p>
+		
+			 <p style = "padding-left: 5px">{{inst}}</p>
+		 
+		</div>
+		
+		<br>
+		 
+		<div>
+	
+			<!-- Trigger/Open The Modal -->
+			<button id="myBtn" class= "button" >Редактировать профиль</button>
+
+			<!-- The Modal -->
+			<div id="modal_1" class="modal">
+
+			  <!-- Modal content -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<span id="close_1" class="close">&times;</span>
+						<h3>Редактировать профиль</h3>
+					</div>
+					<div class = "cr_el"> 
+						<form action="/profile_update" method="post">
+							<input class="i_s" type="text" placeholder="Имя" name="name" value="{{
+							  request.form.name }}">
+							 <input class="i_s" type="text" placeholder="Фамилия" name="surname" value="{{
+							  request.form.surname }}">
+							 <input class="i_s" type="text" placeholder="Возраст" name="age" value="{{
+							  request.form.age }}">
+							 <input class="i_s" type="text" placeholder="Учреждение" name="inst" value="{{
+							  request.form.surname }}">
+							 <input class="i_s" type="text" placeholder="Должность" name="status" value="{{
+							  request.form.surname }}">
+							 
+							<input class="button bt1" type="submit" value="Отправить">
+						</form>
+					</div>
+					
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<script>
+		
+		var modal = document.getElementById("modal_1");
+		var btn = document.getElementById("myBtn");
+		var span = document.getElementById("close_1");
+		
+ 
+		btn.onclick = function() {
+		  modal.style.display = "block";
+		}
+		
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+
+	</script>
+   
+</body>
+</html>

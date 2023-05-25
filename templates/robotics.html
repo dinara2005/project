@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_robot.css') }}">
+    <title>Сайт-Помощник для обучения школьного курса физики и робототехники</title>
+</head>
+
+<body>
+   <ul>
+	  <li><a href="/">Главная</a></li>
+	  <li><a href="/physics">Физика</a></li>
+	  <li><a href="/robotics">Робототехника</a></li>
+	  <li><a href="/info">Пособии</a></li>
+	  {% if data.auth == False: %}
+		<li style = "float:right" ><a  href="/login">Войти</a></li>
+	  {% else %}
+		<li style = "float:right" ><a  href="/profile">{{data.name}}</a></li>
+	  {% endif %}
+	</ul>
+	
+	<div style= "margin-top: 60px; margin-left: 20px;" >
+	
+		<!-- Trigger/Open The Modal -->
+		<button id="myBtn" class="button" >Задачи</button>
+
+		<!-- The Modal -->
+		<div id="modal_1" class="modal">
+
+		  <!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span id="close_1" class="close">&times;</span>
+					<h3>Задачи</h3>
+				</div>
+				<div> 
+					<p class = "crl" > Олимпиадные задачи доступны -  <a href="https://yadi.sk/d/8lL5jVK2cgOZHQ" target="_blank"> тут</a></p>
+				</div>
+					
+			</div>
+		</div>
+	</div>
+	
+	<div class= "cr_el">
+		<!-- Trigger/Open The Modal -->
+		<button id="myBtn2" class="button" >Учебники</button>
+
+		<!-- The Modal -->
+		<div id="modal_2" class="modal">
+
+		  <!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span id="close_2" class="close">&times;</span>
+					<h3>Учебники</h3>
+				</div>
+				<div> 
+					<p class = "crl" > Учебники доступны -  <a href="https://disk.yandex.ru/d/gBKl6O_yi9g2KA" target="_blank"> тут</a></p>
+				</div>
+
+			</div>
+
+		</div>
+	</div >
+	
+	
+	
+	<div class= "cr_el">
+		<!-- Trigger/Open The Modal -->
+		<button id="myBtn3" class="button">Для учителей</button>
+
+		<!-- The Modal -->
+		<div id="modal_3" class="modal">
+
+		  <!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span id="close_3" class="close">&times;</span>
+					<h3>Для учителей</h3>
+				</div>
+				<div> 
+					<p class = "crl" > ЕГЭ и уроки по информатике -  <a href="https://disk.yandex.ru/d/xWV23T2Y4Kc-TQ" target="_blank"> тут</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div>
+		<img src={{ url_for('static', filename='kl_robot.jpg') }} width="480" height="360" style = "position: relative; left : 380px; top : -230px" >
+	</div>
+	
+	<div style = "position: relative; left : 1000px; top : -590px">
+		<video autoplay loop muted inline>
+			<source src="{{ url_for('static', filename='video.mp4') }}" type="video/mp4">
+		</video>	
+	</div>
+	
+	<script>
+		
+		var modal = document.getElementById("modal_1");
+		var btn = document.getElementById("myBtn");
+		var span = document.getElementById("close_1");
+		
+ 
+		btn.onclick = function() {
+		  modal.style.display = "block";
+		}
+		
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+
+		
+		var modal2 = document.getElementById("modal_2");
+		var btn2 = document.getElementById("myBtn2");
+		var span2 = document.getElementById("close_2");
+		
+		btn2.onclick = function() {
+		  modal2.style.display = "block";
+		}
+		span2.onclick = function() {
+		  modal2.style.display = "none";
+		}
+		
+		var modal3 = document.getElementById("modal_3");
+		var btn3 = document.getElementById("myBtn3");
+		var span3 = document.getElementById("close_3");
+		
+		btn3.onclick = function() {
+		  modal3.style.display = "block";
+		}
+		span3.onclick = function() {
+		  modal3.style.display = "none";
+		}
+	</script>
+   
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_index.css') }}">
+    <title>Сайт-Помощник для обучения школьного курса физики и робототехники</title>
+</head>
+
+<body>
+
+	<ul>
+	
+	  <li><a href="/">Главная</a></li>
+	  <li><a href="/physics">Физика</a></li>
+	  <li><a href="/robotics">Робототехника</a></li>
+	  <li><a href="/info">Пособии</a></li>
+	  {% if data.auth == False: %}
+		<li style = "float:right" ><a  href="/login">Войти</a></li>
+	  {% else %}
+		<li style = "float:right" ><a  href="/profile">{{data.name}}</a></li>
+	  {% endif %}
+	  
+	</ul>
+	
+	<div class = "cr_el">
+		<br>
+		
+        <h1 class = "cen crl" >ФИЗИКА. РОБОТОТЕХНИКА</h1>
+		
+		<h2 class = "cen crl" > Именно то, что вы ищете</h2>
+		<br>
+		<p class = "cen crl">
+			<img src={{ url_for('static', filename='n_m.jpg') }}>
+		</p>
+    </div>
+	
+	<br>
+	
+	<div>
+		<img src={{ url_for('static', filename='math.jpg') }} width="480" height="360" style = "position: relative; left : 630px; top : 30px" >
+	</div>
+	
+	<div >
+			<p class = "txe"> 
+				Мы рады приветствовать вас на нашем сайте! <br>
+				Данный портал содержит в себе материалы по робототехнике и физике для более углублённого изучения предметов. 
+				На нашем сайте вы сможете найти необходимые материалы в виде : методических пособий, учебников, интерактивных плакатов, игр и др.
+			</p> 
+			
+	</div>
+	
+	<div>
+		<hr>
+		<h1 class = "cen crl"> СВЯЗАТЬСЯ С НАМИ </h1>
+		<p class = 'cen crl'> Республика Татарстан, г. Казань, Татарстан 2 </p>
+		<br>
+		<p class = 'cen_p crl'> burganova.via@bk.ru </p>
+		<p class = 'cen_p crl'> aidaelnarovna@mail.ru </p>	
+		<p class = 'cen_p crl'> DinaLenarovna@yandex.ru </p>
+		<p class = 'cen_p crl'> ruzilyagapterahimova@yandex.ru </p>
+		
+		
+		<img src={{ url_for('static', filename='logo.png') }} width="100" height="100"  style = "position:relative; top : -118px; left: 585px">
+	</div>
+   
+</body>
+</html>

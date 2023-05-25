@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_for_auth_users.css') }}">
+	<title>Сайт-Помощник для обучения школьного курса физики и робототехники</title>
+</head>
+
+<body>
+   
+	<ul>
+	  <li><a  href="/">Главная</a></li>
+	  <li><a href="/physics">Физика</a></li>
+	  <li><a href="/robotics">Робототехника</a></li>
+	  <li><a href="/info">Пособии</a></li>
+	</ul>
+
+	<div class="cr_el">
+
+		{% if data == True: %}
+			<p class = "crl" > Привет Админ. Можешь добавить новый пост. </p><button id="myBtn" class = "button" >Добавить новый пост</button>
+
+			<!-- The Modal -->
+			<div id="modal_1" class="modal">
+
+			  <!-- Modal content -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<span id="close_1" class="close">&times;</span>
+						<h3>Добавить</h3>
+					</div>
+					<div class = "cr_el"> 
+						<form action="/add_new_post" method="post">
+							<input class = "i_s" type="text" placeholder="Название" name="name" value="{{
+							  request.form.name }}">
+							 <input class = "i_s" type="text" placeholder="Описание" name="description" value="{{
+							  request.form.description }}">
+							 <input class = "i_s" type="text" placeholder="Ссылка" name="link" value="{{
+							  request.form.link }}">
+							 
+							<input class="button bt1" type="submit" value="Добавить">
+						</form>
+					</div>
+					
+				</div>
+
+			</div>
+		 
+		{% endif %}
+		
+	</div>
+
+	<div class="cr_el">
+		
+		{% for item in inf %}
+			<div id = item[0] class="cr">
+				
+				
+				<p class = "cr_el2 "> Название : {{ item[1] }} </p>
+				<p class = "cr_el2 "> Описание : {{ item[2] }}</p>
+				
+				<p class = "cr_el2" > Ссылка :  <a href={{ item[3] }} target="_blank"> открыть</a></p>
+				{% if data == True: %}
+				<form action="/delete_post" method="post">
+					  <input type=hidden value="{{ item[0] }}"name=movie_to_delete />
+					  <input class="button bt" type="submit" value="Удалить">
+				</form>
+				
+				{% endif %}
+			</div>
+			
+			<br>
+			
+			
+		{% endfor %}
+		
+	</div>
+	<script>
+		
+		var modal = document.getElementById("modal_1");
+		
+		var btn = document.getElementById("myBtn");
+		var span = document.getElementById("close_1");
+		
+
+		btn.onclick = function() {
+		  modal.style.display = "block";
+		}
+		
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+
+	</script>
+
+</body>
+</html>

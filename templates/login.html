@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_login.css') }}">
+    <title>Сайт-Помощник для обучения школьного курса физики и робототехники</title>  
+</head>
+
+<body>
+	<div style = "margin-top : 250px;margin-left : 550px;">
+		<h1 class= "crl" style = "margin-left : 100px;" >Авторизация</h1>
+		<br>
+		<form action="" method="post">
+			<input class="i_s" type="text" placeholder="Логин" name="username" value="{{
+			  request.form.username }}">
+			<input class="i_s" type="password" placeholder="Пароль" name="password" value="{{
+			  request.form.password }}">
+			<input class="button" type="submit" value="Войти">
+		</form>
+		{% if error %}
+			<p class="error"><strong>Error:</strong> {{ error }}</p>
+		{% endif %}
+	</div>
+</body>
+</html>
